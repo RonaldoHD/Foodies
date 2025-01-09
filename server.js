@@ -1,7 +1,8 @@
 const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
-const recipes = require('./recipes_raw_nosource_fn'); // Your recipe dataset
+const cors = require("cors");
+
 const express = require("express");
 const { initializeApp } = require("firebase/app");
 const { getFirestore, doc, setDoc, getDocs ,collection , updateDoc} = require("firebase/firestore");
@@ -46,12 +47,12 @@ const fetchImage = async (query) => {
 const DATA_FILE = path.join(__dirname, 'recipes_raw_nosource_fn.json');
 
 const appp = express();
-app.use((req, res, next) => {
+appp.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
-app.use(cors());
+appp.use(cors());
 
 appp.use(express.json());
 

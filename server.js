@@ -46,6 +46,13 @@ const fetchImage = async (query) => {
 const DATA_FILE = path.join(__dirname, 'recipes_raw_nosource_fn.json');
 
 const appp = express();
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+app.use(cors());
+
 appp.use(express.json());
 
 

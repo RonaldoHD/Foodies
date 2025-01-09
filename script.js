@@ -1,5 +1,7 @@
 
 let selectedImages = [];
+const endpoint = "https://foodies-d70k.onrender.com"
+// const endpoint = "http://localhost:3001/"
 
 async function generateImageUrls(recipeTitle) {
     try {
@@ -32,7 +34,7 @@ async function updateRecipeStatus(data) {
     }
 }
 
-fetch("http://localhost:3001/getfirebase")
+fetch(`${endpoint}/getfirebase`)
     .then((response) => response.json())
     .then((recipes) => {
         const container = document.getElementById("recipes-list");
